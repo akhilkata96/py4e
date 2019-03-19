@@ -1,0 +1,21 @@
+name = input("Enter file:")
+words=list()
+counts=dict()
+z1= list()
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+for line in handle:
+    line.rstrip()
+    if not line.startswith("From "):
+        continue
+    num = line.find(":")
+    z=line[num-2:num]
+    if z:
+        z1.append(z)
+        z2 = sorted(z1)
+    #word = line.split(":")
+    #words.append(word[0])
+for w in z2:
+    counts[w]=counts.get(w,0)+1
+for k,v in counts.items():
+    print(k,v)
